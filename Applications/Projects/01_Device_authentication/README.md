@@ -85,5 +85,5 @@ As example below.
 ----------------------------------------------------------------------------------------------------------------
  - Initialize target STSAFE-A120
 
- ## Device authentication over ST SPL05 CA certificate : Successful
+ <span style="color:green"> ## Device authentication over ST SPL05 CA certificate : Successful</span>
 </pre>

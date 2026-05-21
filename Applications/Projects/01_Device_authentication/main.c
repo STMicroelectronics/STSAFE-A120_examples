@@ -48,6 +48,7 @@
         0x2E, 0x02, 0x21, 0x00, 0xB1, 0xD9, 0x51, 0x6A, 0xAD, 0x9A, 0x3E, 0x86, 0xD2, 0x2B, 0x8E, 0x3B, \
         0x3B, 0xD0, 0x14, 0x6F, 0xAB, 0xB9, 0xB9, 0x22, 0xF0, 0x45, 0x26, 0x34, 0xFE, 0x92, 0x7F, 0xF5, \
         0xD6, 0x36, 0xCD, 0x90
+
 #define STSAFE_CERTIFICATE_ZONE_0 0U
 #define STSE_STATIC_PRIVATE_KEY_SLOT_0 0U
 
@@ -113,11 +114,11 @@ int main(void) {
         STSE_STATIC_PRIVATE_KEY_SLOT_0);
 
     if (stse_ret != STSE_OK) {
-        printf(PRINT_RED "\n\n\r ## Device authentication over ST SPL05 CA certificate  : Failed \n\r");
+        printf(PRINT_RED "\n\n\r ## Device authentication over STSE-A SPL05 CA certificate  : Failed \n\r");
         printf("\n\r\t o stse_device_authenticate ERROR : 0x%04X", stse_ret);
         apps_process_error(stse_ret);
     } else {
-        printf(PRINT_GREEN "\n\n\r ## Device authentication over ST SPL05 CA certificate : Successful\n\r");
+        printf(PRINT_GREEN "\n\n\r ## Device authentication over STSE-A SPL05 CA certificate : Successful\n\r");
     }
 
     while (1) {
