@@ -48,6 +48,7 @@
         0x2E, 0x02, 0x21, 0x00, 0xB1, 0xD9, 0x51, 0x6A, 0xAD, 0x9A, 0x3E, 0x86, 0xD2, 0x2B, 0x8E, 0x3B, \
         0x3B, 0xD0, 0x14, 0x6F, 0xAB, 0xB9, 0xB9, 0x22, 0xF0, 0x45, 0x26, 0x34, 0xFE, 0x92, 0x7F, 0xF5, \
         0xD6, 0x36, 0xCD, 0x90
+
 #define STSAFE_CERTIFICATE_ZONE_0 0U
 #define STSE_STATIC_PRIVATE_KEY_SLOT_0 0U
 
@@ -151,7 +152,6 @@ int main(void) {
     PLAT_UI8 signature[signature_size];
 
     /* ## Generate a challenge ( aligned with key type size requirement) */
-
     printf("\n\n\r## Host random challenge : \n\r");
     PLAT_UI16 challenge_size = stse_ecc_info_table[key_type].private_key_size;
     PLAT_UI8 challenge[challenge_size];
@@ -159,7 +159,6 @@ int main(void) {
     apps_print_hex_buffer(challenge, challenge_size);
 
     /* ##  Signature over challenge */
-
     stse_ret = stse_ecc_generate_signature(
         &stse_handler,                  /* STSE handler */
         STSE_STATIC_PRIVATE_KEY_SLOT_0, /* Slot number */
@@ -186,7 +185,7 @@ int main(void) {
     if (stse_ret != STSE_OK) {
         printf(PRINT_RED "\n\n\r## stse_certificate_verify_signature ERROR : 0x%04X", stse_ret);
     } else {
-        printf(PRINT_GREEN "\n\n\r# ## Device Authenticated (Challenge signature verified successfully)");
+        printf(PRINT_GREEN "\n\n\r## Device Authenticated (Challenge signature verified successfully)");
     }
 
     printf(PRINT_RESET "\n\r\n\r*#*# STMICROELECTRONICS #*#*\n\r");

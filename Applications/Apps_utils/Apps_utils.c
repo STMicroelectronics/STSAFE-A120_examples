@@ -352,6 +352,8 @@ void apps_print_asymmetric_key_table_info(stse_Handler_t *pSTSE) {
     }
 }
 
+#ifdef STSE_CONF_STSAFE_A_SUPPORT
+
 /**
  * @brief  Print host key provisioning control fields
  * @param  pSTSE Pointer to STSE handler structure
@@ -423,6 +425,8 @@ void apps_print_generic_public_key_slot_configuration_flags(stse_Handler_t *pSTS
     printf("      %s     ", (generic_public_key_presence == 0) ? "NO " : "YES");
     printf("\n\r ------+--------------+--------------------------+----------------------------+--------------");
 }
+
+#endif /* STSE_CONF_STSAFE_A_SUPPORT */
 
 /**
  * @brief  Print buffer content in hexadecimal format
