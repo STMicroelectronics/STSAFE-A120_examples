@@ -29,7 +29,9 @@
 #define I2C_BUS_MAX 16
 
 /* Open file descriptors, one per bus, indexed by busID */
-static int i2c_fds[I2C_BUS_MAX];
+static int i2c_fds[I2C_BUS_MAX] = {
+    [0 ... (I2C_BUS_MAX - 1)] = -1
+};
 
 /* Internal frame assembly buffer (A120 max input + 2 response length + 1 header) */
 static PLAT_UI8  I2c_buffer[755U];
@@ -44,8 +46,9 @@ stse_ReturnCode_t stse_platform_i2c_init(PLAT_UI8 busID) {
     }
 
     /* Close any previously opened descriptor on this bus */
-    if (i2c_fds[busID] > 0) {
+    if (i2c_fds[busID] >= 0) {
         close(i2c_fds[busID]);
+        i2c_fds[busID] = -1;
     }
 
     snprintf(dev_path, sizeof(dev_path), "/dev/i2c-%u", (unsigned int)busID);

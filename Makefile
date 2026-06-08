@@ -156,7 +156,7 @@ CFLAGS += \
 # Linker flags
 # ---------------------------------------------------------------------------
 # Using += to preserve --sysroot and rpath flags from the SDK environment.
-LDFLAGS += -lssl -lcrypto -lm
+LDFLAGS += -lssl -lcrypto -lm -lpthread
 
 # ---------------------------------------------------------------------------
 # Platform source files (shared across all examples)

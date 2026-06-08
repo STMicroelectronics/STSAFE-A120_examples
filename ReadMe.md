@@ -211,6 +211,26 @@ make CROSS_COMPILE=arm-linux-gnueabihf- EXAMPLE=01_Echo_loop
 | `CROSS_COMPILE` | *(empty)* | Toolchain prefix for generic toolchains — **not needed** when using the OpenSTLinux SDK |
 | `EXAMPLE` | *(all)* | Build only the specified example |
 
+### Library Configuration (stse_conf.h)
+
+Each example provides a local `stse_conf.h` used to enable/disable STSELib features and communication behavior.
+
+For Linux multi-threaded applications, STSELib services include a thread-safe secure-element usage guard:
+
+- Transfer paths use `guard_enter` / `guard_exit`.
+- STSAFE-A host sessions keep guard ownership for the full session lifetime.
+- This guard protects STSAFE device usage (not full I2C bus reservation).
+
+Optional timeout configuration in `stse_conf.h`:
+
+```c
+/* Linux STSAFE device usage guard timeout in ms (0 or undefined = blocking wait). */
+/* #define STSE_CONF_STSAFE_DEVICE_LOCK_TIMEOUT_MS 200 */
+/* Backward-compatible alias: STSE_CONF_I2C_TRANSACTION_LOCK_TIMEOUT_MS */
+```
+
+For full configuration details, refer to [Middleware/STSELib/doc/resources/Markdown/03_LIBRARY_CONFIGURATION/03_LIBRARY_CONFIGURATION.md](Middleware/STSELib/doc/resources/Markdown/03_LIBRARY_CONFIGURATION/03_LIBRARY_CONFIGURATION.md).
+
 ---
 
 ## Running the Examples
