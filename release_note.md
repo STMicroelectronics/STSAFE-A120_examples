@@ -1,8 +1,15 @@
 # RELEASE NOTE
 
-## 1.0.3 - Jun 26 (Latest) 
+## 1.0.4 - July 26 (Latest) 
 
 - Update SDK structure to support STSE host & crypto platform repositories
+- STSELib version 1.1.9
+
+## 1.0.3 - Jun 26 
+
+- Add multi IDE for project template
+- Fix Apps_utils
+- Update documentation
 - STSELib version 1.1.8
 
 ## 1.0.2 - Dec 25
